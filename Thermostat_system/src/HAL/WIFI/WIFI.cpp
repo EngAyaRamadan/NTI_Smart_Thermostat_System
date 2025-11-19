@@ -1,6 +1,33 @@
-#include "Hal/WIFI/WIFI.h"
 
-static WIFI_Config_t g_wifiCfg;
+#include <Arduino.h>
+#include <WiFi.h>
+#include "../../App_cfg.h"
+#include "../../HAL/GPIO/gpio.h"
+#include "wifi.h"
+
+#if WIFI_DEBUG == STD_ON
+#define DEBUG_PRINTLN(var) Serial.println(var)
+#else
+#define DEBUG_PRINTLN(var)
+#endif
+
+void onWifiConnected(void)
+{
+    Serial.println("WiFi Connected! ");
+}
+
+void onWifiDisconnected(void)
+{
+    Serial.println("WiFi Disconnected ");
+}
+
+static WIFI_Config_t g_wifiCfg = {
+    .ssid = SSID,
+    .password = PASSWORD,
+    .reconnect_interval_ms = 5000,
+    .on_connect = onWifiConnected,
+    .on_disconnect = onWifiDisconnected};
+
 static WIFI_Status_t g_wifiStatus = WIFI_STATUS_DISCONNECTED;
 static unsigned long g_lastReconnectAttempt = 0;
 
@@ -89,4 +116,3 @@ int WIFI_GetRSSI(void)
         return WiFi.RSSI();
     return 0;
 }
-
