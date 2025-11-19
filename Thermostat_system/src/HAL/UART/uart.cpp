@@ -44,3 +44,15 @@ void UART_Receive_Data(UARTN_t uart_n, String &payload)
     }
 #endif
 }
+
+HardwareSerial* UART_getSerial(UARTN_t uart_n)
+{
+#if UART_ENABLED==STD_ON
+    if ((int)uart_n < MAXLENGTH) {
+        return &myserials[uart_n];  // return pointer to the correct serial
+    }
+#endif
+    return nullptr;  // return null if invalid
+}
+
+

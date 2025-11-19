@@ -2,7 +2,7 @@
 #define GSM_H
 
 #include <Arduino.h>
-#include "../UART/UART.h"
+#include "../UART/uart.h"
 
 // Return type for functions
 typedef enum {

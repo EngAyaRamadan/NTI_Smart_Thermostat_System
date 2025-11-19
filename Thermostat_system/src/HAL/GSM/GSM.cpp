@@ -11,7 +11,7 @@ static HardwareSerial* gsmSerial = nullptr;
 void GSM_init(UARTN_t uart)
 {
     // Initialize UART using your driver
-    UART_init();
+    UART_Init();
 
     // Get the serial port handler from your UART driver
     gsmSerial = UART_getSerial(uart);
