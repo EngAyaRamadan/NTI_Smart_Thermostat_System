@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "../App_cfg.h"
-#include "../Hal//GPIO/gpio.h"
-#include "../Hal/SensorH/SensorH.h"
+#include "../HAL//GPIO/gpio.h"
+#include "../HAL/SensorH/SensorH.h"
 #include "ULS.h"
 
 #if POT_DEBUG == STD_ON

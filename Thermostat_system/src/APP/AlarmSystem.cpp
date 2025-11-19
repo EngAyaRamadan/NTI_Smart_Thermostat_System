@@ -67,7 +67,7 @@
 // }
 
 #include <Arduino.h>
-#include "../APP_cfg.h"
+#include "../App_cfg.h"
 #include "AlarmSystem.h"
 #include "../HAL/GPIO/gpio.h"
 #include "POT.h"
@@ -97,12 +97,19 @@ void Alarm_Init(void)
 ALARM_STATES_t Alarm_Transition(float prcent_value)
 {
     if (prcent_value >= 80)
+    {
         return HIGH_ALARM;
+    }
     else if (prcent_value <= 30)
+    {
         return LOW_ALARM;
-    else if (prcent_value > 30 && prcent_value < 80)
+    }
+    else // covers prcent_value > 30 && prcent_value < 80
+    {
         return NORMAL_ALARM;
+    }
 }
+
 
 void enterState(ALARM_STATES_t state, float dutyCycle)
 {

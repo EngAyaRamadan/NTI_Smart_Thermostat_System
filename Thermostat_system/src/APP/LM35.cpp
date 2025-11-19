@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "../App_cfg.h"
-#include "../Hal/SensorH/SensorH.h"
+#include "../HAL/SensorH/SensorH.h"
 
 #if LM35_DEUG == STD_ON
 #define DEBUG_PRINTLN(var) Serial.println(var)
